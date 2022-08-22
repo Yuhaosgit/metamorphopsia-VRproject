@@ -26,6 +26,6 @@ namespace CustomGrid
 
         Mesh meshSample;
 
-        public int maxSubdivision = 3;
+        public int maxSubdivision = 4;
     }
 }

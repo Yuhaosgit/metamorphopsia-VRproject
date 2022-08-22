@@ -115,17 +115,17 @@ public class SampleSavePanel : BasePanel
 
             MoveVertexController.Initilize();
 
-            if (!GridManager.gridDecoration.Reconstruct(GameObject.Find("Grid").GetComponent<MeshFilter>().mesh, GameObject.Find("Grid").transform))
-            {
-                Debug.Log("Can't subdivide the grid, the vertices number is same to previous.");
-            }
+            //if (!GridManager.gridDecoration.Reconstruct(GameObject.Find("Grid").GetComponent<MeshFilter>().mesh, GameObject.Find("Grid").transform))
+            //{
+            //    Debug.Log("Can't subdivide the grid, the vertices number is same to previous.");
+            //}
         });
 
         ui_tool.GetOrAddComponentInChildren<Button>("Recover").onClick.AddListener(() =>
         {
             GameObject Grid = GameObject.Find("Grid");
             Grid.GetComponent<MeshFilter>().mesh = GridGeneration.Instance().Initilize(GridGeneration.Instance().subdivisionLevel);
-            GridManager.gridDecoration.Reconstruct(Grid.GetComponent<MeshFilter>().mesh, Grid.transform);
+            //GridManager.gridDecoration.Reconstruct(Grid.GetComponent<MeshFilter>().mesh, Grid.transform);
         });
     }
 }

@@ -17,7 +17,6 @@ namespace CustomGrid
 
             LoadPointModel();
             InitilizePoints();
-            //InitilizeWireframe();
         }
 
         public void Update(Mesh mesh, Transform transform_)

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using CustomGrid;
 
@@ -9,6 +10,7 @@ public class ConfigPanel : BasePanel
 {
     static readonly string path = "Panels/ConfigPanel";
     public ConfigPanel() : base(new UIType(path)) { }
+    //static public UnityEvent<Vector4> ShowDots = new UnityEvent<Vector4>();
 
     public override void OnAwake()
     {
@@ -22,14 +24,22 @@ public class ConfigPanel : BasePanel
         {
             GridManager.showTexture = isOn;
         });
+
         showGrid.onValueChanged.AddListener((bool isOn) =>
         {
             MoveVertexController.showGrid = isOn;
+
+            //if (isOn)
+            //    ShowDots.Invoke(new Vector4(0, 0, 0, 1));
+            //else
+            //    ShowDots.Invoke(new Vector4(0, 0, 0, 0));
         });
+
         ui_tool.GetOrAddComponentInChildren<Button>("Play").onClick.AddListener(() =>
         {
             GameRoot.Instance.scene_system.SetScene(new DisplayScene());
         });
+
         ui_tool.GetOrAddComponentInChildren<Button>("Quit").onClick.AddListener(() =>
         {
             Application.Quit();

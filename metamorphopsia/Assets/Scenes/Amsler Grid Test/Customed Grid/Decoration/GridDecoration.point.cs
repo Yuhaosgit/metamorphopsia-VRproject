@@ -27,13 +27,16 @@ namespace CustomGrid
             points = new GameObject[vertices.Length];
             Vector3 pointScale = Vector3.one * (0.1f - (0.02f * (GridGeneration.Instance().subdivisionLevel - 1)));
 
-            for (int i = 0; i < points.Length; ++i)
-            {
+            for (int i = 0; i < vertices.Length; ++i)
+            { 
                 points[i] = GameObject.Instantiate(pointImage);
+
                 points[i].transform.SetParent(pointDecoration.transform);
                 points[i].transform.localScale = pointScale;
                 points[i].transform.position = transform.localToWorldMatrix.MultiplyPoint(vertices[i]);
             }
+
+            points[points.Length / 2].transform.localScale *= 2;
         }
 
         private void ReconstructPoints()

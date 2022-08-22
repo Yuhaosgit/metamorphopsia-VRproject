@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0073811817, g: -0.01477311, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -429,7 +429,7 @@ Transform:
   - {fileID: 1282098236}
   - {fileID: 1813905190}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &693448154
 GameObject:
@@ -539,7 +539,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -579,20 +579,50 @@ PrefabInstance:
       propertyPath: sceneWidth
       value: 14.4
       objectReference: {fileID: 0}
+    - target: {fileID: 587145146593757773, guid: a6faf3f503b4f784e97124405151c148,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1020575510525613773, guid: a6faf3f503b4f784e97124405151c148,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1240144756283410992, guid: a6faf3f503b4f784e97124405151c148,
         type: 3}
       propertyPath: m_Name
       value: EyesSystem
+      objectReference: {fileID: 0}
+    - target: {fileID: 2636497070838628510, guid: a6faf3f503b4f784e97124405151c148,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5328246221674644458, guid: a6faf3f503b4f784e97124405151c148,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 5630935751357096904, guid: a6faf3f503b4f784e97124405151c148,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 9b2df94cebb926c4db08422286bfdd19, type: 2}
+    - target: {fileID: 5757058067585034127, guid: a6faf3f503b4f784e97124405151c148,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 72
+      objectReference: {fileID: 0}
     - target: {fileID: 6032282944037448072, guid: a6faf3f503b4f784e97124405151c148,
         type: 3}
       propertyPath: sceneWidth
       value: 14.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6479552697282445991, guid: a6faf3f503b4f784e97124405151c148,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6491660742013360764, guid: a6faf3f503b4f784e97124405151c148,
         type: 3}
@@ -704,7 +734,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &904062604
 GameObject:
@@ -839,7 +869,7 @@ GameObject:
   - component: {fileID: 1282098234}
   - component: {fileID: 1282098233}
   - component: {fileID: 1282098232}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1057,7 +1087,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 256
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: cf956afd9457a1941a17e80ae74db0aa, type: 2}
   m_TargetDisplay: 0
@@ -1142,7 +1172,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1930009329
 GameObject:
@@ -1227,7 +1257,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1930009334
 MonoBehaviour:

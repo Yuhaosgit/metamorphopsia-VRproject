@@ -23,6 +23,8 @@ public class MoveVertexController : MonoBehaviour
     public Vector4 columnLineColor;
 
     static public bool showGrid = true;
+    MaterialPropertyBlock materialBlock;
+
     bool Boundary(int index, Vector2 direction)
     {
         Vector3 xVector = Vector3.zero, yVector = Vector3.zero;
@@ -101,6 +103,20 @@ public class MoveVertexController : MonoBehaviour
         selectedPoint = selectedColumnLine + width * selectedRowLine;
     }
 
+    void ResetDots()
+    {
+        Color dotColor = showGrid ? new Vector4(0, 0, 0, 1) : new Vector4(0, 0, 0, 0);
+
+        if (!materialBlock.isEmpty)
+        {
+            materialBlock.SetColor("_ColorDot", dotColor);
+            GameObject.Find("Points").transform.GetChild(selectedPoint).
+                gameObject.GetComponent<Renderer>().SetPropertyBlock(materialBlock);
+        }
+        GameObject.Find("Points").transform.GetChild(0).
+            gameObject.GetComponent<Renderer>().sharedMaterial.SetColor("_ColorDot", dotColor);
+    }
+
     private void SetLineColor()
     {
         Vector4 lineColor = showGrid ? new Vector4(0, 0, 0, 1) : new Vector4(0, 0, 0, 0);
@@ -109,17 +125,15 @@ public class MoveVertexController : MonoBehaviour
         GetComponent<Renderer>().material.SetInt("YSelected", selectedRowLine);
         GetComponent<Renderer>().material.SetVector("restColor", lineColor);
 
-        for (int i = 0; i < GameObject.Find("Points").transform.childCount; ++i)
-        {
-            if (i == selectedPoint)
-            {
-                GameObject.Find("Points").transform.GetChild(i).
-                gameObject.GetComponent<Renderer>().material.SetColor("_Color", new Vector4(0, 0, 0, 1));
-            }
-            else
-                GameObject.Find("Points").transform.GetChild(i).
-                gameObject.GetComponent<Renderer>().material.SetColor("_Color", lineColor);
-        }
+        //
+        GameObject.Find("Points").transform.GetChild(selectedPoint).
+           gameObject.GetComponent<Renderer>().GetPropertyBlock(materialBlock);
+
+        materialBlock.SetColor("_ColorDot", new Color(0, 0, 0, 1));
+
+        GameObject.Find("Points").transform.GetChild(selectedPoint).
+           gameObject.GetComponent<Renderer>().SetPropertyBlock(materialBlock);
+        //
     }
 
     static public void Initilize()
@@ -139,6 +153,12 @@ public class MoveVertexController : MonoBehaviour
         columnLineColor = new Vector4(0, 0, 1, 1);
 
         ChangeGrid.AddListener(ChangeStructure);
+        materialBlock = new MaterialPropertyBlock();
+    }
+
+    private void OnDisable()
+    {
+        materialBlock.Clear();
     }
 
     private void Start()
@@ -160,6 +180,8 @@ public class MoveVertexController : MonoBehaviour
         }
 
         vertices = GetComponent<MeshFilter>().mesh.vertices;
+
+        ResetDots();
 
         ChoosePoint();
         if (MovePoint(moveSpeed))

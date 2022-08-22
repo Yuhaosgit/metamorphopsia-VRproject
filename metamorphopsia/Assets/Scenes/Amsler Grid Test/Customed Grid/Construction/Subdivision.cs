@@ -9,7 +9,7 @@ namespace CustomGrid
 
         public Mesh Subdivision(Mesh mesh)
         {
-            if (++subdivisionLevel >= maxSubdivision)
+            if (++subdivisionLevel > maxSubdivision)
             {
                 subdivisionLevel = (uint)maxSubdivision;
                 Debug.Log("The mesh can not be divided anymore.");

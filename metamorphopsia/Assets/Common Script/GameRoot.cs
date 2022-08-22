@@ -21,6 +21,7 @@ public class GameRoot : MonoBehaviour
     }
     private void Start()
     {
-        scene_system.SetScene(new DisplayScene());
+        //scene_system.SetScene(new DisplayScene());
+        scene_system.SetScene(new EyeTestScene());
     }
 }

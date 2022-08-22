@@ -112,7 +112,6 @@ public class GridManager : MonoBehaviour
         ShaderDecorateUpdate();
     }
 
-    private bool selectionState;
     void OnUIUpdate()
     {
         Vector2 direction = ControllerOutput.leftaxisDirection;

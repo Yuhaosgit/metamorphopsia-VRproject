@@ -78,7 +78,7 @@ Shader "Sample/SampleShader"
                     {
                         return float4(0,1,0,1);
                     }
-                    return float4(dx.x,dy.y,0,1);
+                    return restColor;
                 }
                 return fragColor;
             }
