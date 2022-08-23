@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Valve.VR.Extras;
 
 public class MenuPanel : BasePanel
 {
@@ -45,6 +46,14 @@ public class MenuPanel : BasePanel
             {
                 toggles[1].isOn = true;
             }
+        });
+
+        Toggle fishEyes = ui_tool.GetOrAddComponentInChildren<Toggle>("FishEyes");
+        fishEyes.isOn = SteamVR_TestTrackedCamera.undistorted;
+
+        fishEyes.onValueChanged.AddListener((bool isOn) =>
+        {
+            SteamVR_TestTrackedCamera.undistorted = isOn;
         });
 
         ui_tool.GetOrAddComponentInChildren<Button>("Quit").onClick.AddListener(() =>

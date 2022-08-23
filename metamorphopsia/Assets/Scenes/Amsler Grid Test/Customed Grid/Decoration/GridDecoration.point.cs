@@ -43,6 +43,7 @@ namespace CustomGrid
         {
             DestroyPoints();
             InitilizePoints();
+            MoveVertexController.ShowDotsUI.Invoke();
         }
 
         void UpdatePoints()

@@ -27,5 +27,10 @@ namespace CustomGrid
         Mesh meshSample;
 
         public int maxSubdivision = 4;
+
+        public bool AbleSubdivde()
+        {
+            return subdivisionLevel != maxSubdivision;
+        }
     }
 }

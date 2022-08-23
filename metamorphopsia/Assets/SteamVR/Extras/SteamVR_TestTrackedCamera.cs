@@ -6,8 +6,9 @@ namespace Valve.VR.Extras
     public class SteamVR_TestTrackedCamera : MonoBehaviour
     {
         public Material material;
-        public bool undistorted = true;
+        public static bool undistorted = false;
         public bool cropped = true;
+        public int eyes;
 
         private void OnEnable()
         {
@@ -56,12 +57,18 @@ namespace Valve.VR.Extras
             // Therefore, you'll want to crop it to the specified frameBounds to remove this.
             if (cropped)
             {
-                VRTextureBounds_t bounds = source.frameBounds;
-                material.mainTextureOffset = new Vector2(0f, 0.5f);
+                if (eyes != 1 && eyes != 0)
+                {
+                    Debug.Log("Please set target eye.");
+                    return;
+                }
 
+                material.mainTextureOffset = (eyes == 0 ? new Vector2(0f, 1f) : new Vector2(0f, 0.5f));
+                material.mainTextureScale = new Vector2(1f, -0.5f);
+
+                VRTextureBounds_t bounds = source.frameBounds;
                 float du = bounds.uMax - bounds.uMin;
                 float dv = bounds.vMax - bounds.vMin;
-                material.mainTextureScale = new Vector2(1f, -0.5f);
 
                 aspect *= Mathf.Abs(du / dv);
             }

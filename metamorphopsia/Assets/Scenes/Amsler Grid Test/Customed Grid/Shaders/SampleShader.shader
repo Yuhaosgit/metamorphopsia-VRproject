@@ -6,6 +6,7 @@ Shader "Sample/SampleShader"
         _Color ("Background Color", Color) = (1,1,1,1)
         [Toggle(_False)]
         _ShowTexture("Use Texture", float) = 0
+        _ShowGrid("Show grid layout", float) = 1
     }
     SubShader
     {
@@ -34,6 +35,7 @@ Shader "Sample/SampleShader"
                 float2 uv : TEXCOORD0;
             };
 
+            uniform float _ShowGrid;
             uniform float _ShowTexture;
             uniform float4 _Color;
 
@@ -57,11 +59,38 @@ Shader "Sample/SampleShader"
                 return output;
             }
 
+            float4 GridHide(float2 UV, float4 fragColor)
+            {
+                float gridX = UV.x*(width-1);
+                float gridY = UV.y*(height-1);
+
+                float offsetX = abs(frac(gridX)-0.5f);
+                float offsetY = abs(frac(gridY)-0.5f);
+
+                if ((offsetX >= scale || offsetY >= scale))
+                {
+                    if (floor(gridX+0.5f) == XSelected && !(offsetY >= scale))
+                    {
+                        fragColor = _ShowTexture >= 0.5 ? fragColor + float4(1,0,0,1) : fragColor * float4(1,0,0,1);
+                    }
+                    if (floor(gridY+0.5f) == YSelected && !(offsetX >= scale))
+                    {
+                        fragColor = _ShowTexture >= 0.5 ? fragColor + float4(0,0,1,1) : fragColor * float4(0,0,1,1);                   
+                    }
+
+                    if (floor(gridX+0.5f) == XSelected && !(offsetX <= scale))
+                    {
+                        fragColor = _ShowTexture >= 0.5 ? fragColor + float4(1,0,0,1) : fragColor * float4(1,0,0,1);    
+                    }
+                    if (floor(gridY+0.5f) == YSelected && !(offsetY <= scale))
+                    {
+                        fragColor = _ShowTexture >= 0.5 ? fragColor + float4(0,0,1,1) : fragColor * float4(0,0,1,1);                    }
+                    }
+                return fragColor;
+            }
+
             float4 Grid(float2 UV, float4 fragColor)
             {
-            	float2 dx = ddx(UV);
-	            float2 dy = ddy(UV);
-
                 float gridX = UV.x*(width-1);
                 float gridY = UV.y*(height-1);
 
@@ -76,23 +105,27 @@ Shader "Sample/SampleShader"
                     }
                     if (floor(gridY+0.5f) == YSelected && !(offsetX >= scale))
                     {
-                        return float4(0,1,0,1);
+                        return float4(0,0,1,1);
                     }
-                    return restColor;
+
+                    return restColor; 
                 }
                 return fragColor;
             }
 
             float4 frag (Fragment fragment) : SV_Target
             {
-                float4 frag_color;
+                float4 frag_color = _Color;
 
                 if (_ShowTexture >= 0.5)
-                   frag_color = float4(0,0,0,0);
-                else
-                   frag_color = _Color;
+                    frag_color = float4(0,0,0,0);
                 
-                return Grid(fragment.uv, frag_color);
+                if (_ShowGrid)
+                    frag_color = Grid(fragment.uv, frag_color);
+                else
+                    frag_color = GridHide(fragment.uv, frag_color);
+                
+                return frag_color;
             }
             ENDCG
         }

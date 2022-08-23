@@ -7,8 +7,18 @@ public class GameRoot : MonoBehaviour
     public static GameRoot Instance { get; private set; }
     public SceneSystem scene_system { get; private set; }
 
+    void Configuration()
+    {
+        Screen.SetResolution(1440, 1600, true);
+
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 60;
+    }
+
     private void Awake()
     {
+        Configuration();
+
         if (Instance != null && Instance != this)
         {
             Destroy(this.gameObject);
@@ -21,7 +31,7 @@ public class GameRoot : MonoBehaviour
     }
     private void Start()
     {
-        //scene_system.SetScene(new DisplayScene());
-        scene_system.SetScene(new EyeTestScene());
+        scene_system.SetScene(new DisplayScene());
+        //scene_system.SetScene(new EyeTestScene());
     }
 }

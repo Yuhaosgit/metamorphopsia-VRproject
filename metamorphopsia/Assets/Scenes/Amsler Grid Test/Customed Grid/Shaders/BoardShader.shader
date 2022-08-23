@@ -6,8 +6,8 @@ Shader "Sample/BoardShader"
     }
     SubShader
     {
-        Tags { "RenderType"="Transparent-1" 
-        "Queue"= "Transparent-1"}
+        Tags { "RenderType"="Transparent" 
+        "Queue"= "Transparent"}
 
         Pass
         {

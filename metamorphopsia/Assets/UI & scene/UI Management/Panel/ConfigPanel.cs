@@ -10,7 +10,6 @@ public class ConfigPanel : BasePanel
 {
     static readonly string path = "Panels/ConfigPanel";
     public ConfigPanel() : base(new UIType(path)) { }
-    //static public UnityEvent<Vector4> ShowDots = new UnityEvent<Vector4>();
 
     public override void OnAwake()
     {
@@ -29,10 +28,10 @@ public class ConfigPanel : BasePanel
         {
             MoveVertexController.showGrid = isOn;
 
-            //if (isOn)
-            //    ShowDots.Invoke(new Vector4(0, 0, 0, 1));
-            //else
-            //    ShowDots.Invoke(new Vector4(0, 0, 0, 0));
+            if (isOn)
+                MoveVertexController.ShowDotsUI.Invoke();
+            else
+                MoveVertexController.ShowDotsUI.Invoke();
         });
 
         ui_tool.GetOrAddComponentInChildren<Button>("Play").onClick.AddListener(() =>

@@ -9,9 +9,13 @@ public class controlUI : MonoBehaviour
     public Camera UIcamera;
     public Camera LeftEyeCamera;
     public Camera RightEyeCamera;
+    public Camera LeftCamera;
+    public Camera RightCamera;
 
     private void Start()
     {
+        LeftCamera.enabled = true;
+        RightCamera.enabled = true;
         LeftEyeCamera.enabled = true;
         RightEyeCamera.enabled = true;
         UIcamera.enabled = false;
@@ -25,6 +29,8 @@ public class controlUI : MonoBehaviour
             {
                 LeftEyeCamera.enabled = true;
                 RightEyeCamera.enabled = true;
+                LeftCamera.enabled = true;
+                RightCamera.enabled = true;
                 UIcamera.enabled = false;
                 DisplayScene.panelManager.Pop();
             }
@@ -32,6 +38,8 @@ public class controlUI : MonoBehaviour
             {
                 LeftEyeCamera.enabled = false;
                 RightEyeCamera.enabled = false;
+                LeftCamera.enabled = false;
+                RightCamera.enabled = false;
                 UIcamera.enabled = true;
                 DisplayScene.panelManager.Push(new MenuPanel());
             }

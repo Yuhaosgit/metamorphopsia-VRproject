@@ -7,6 +7,8 @@ using CustomGrid;
 public class MoveVertexController : MonoBehaviour
 {
     public static UnityEvent ChangeGrid = new UnityEvent();
+    public static UnityEvent ShowDotsUI = new UnityEvent();
+    public static UnityEvent ResetSelectedPointPosition = new UnityEvent();
 
     static private int selectedRowLine;
     static private int selectedColumnLine;
@@ -103,37 +105,42 @@ public class MoveVertexController : MonoBehaviour
         selectedPoint = selectedColumnLine + width * selectedRowLine;
     }
 
-    void ResetDots()
+    void ShowDots()
     {
-        Color dotColor = showGrid ? new Vector4(0, 0, 0, 1) : new Vector4(0, 0, 0, 0);
-
-        if (!materialBlock.isEmpty)
+        if (showGrid)
         {
-            materialBlock.SetColor("_ColorDot", dotColor);
-            GameObject.Find("Points").transform.GetChild(selectedPoint).
-                gameObject.GetComponent<Renderer>().SetPropertyBlock(materialBlock);
+            for (int i = 0; i < GameObject.Find("Points").transform.childCount; ++i)
+            {
+                GameObject.Find("Points").transform.GetChild(i).gameObject.SetActive(true);
+                GameObject.Find("Grid").GetComponent<Renderer>().material.SetFloat("_ShowGrid", 1.0f);
+            }
         }
-        GameObject.Find("Points").transform.GetChild(0).
-            gameObject.GetComponent<Renderer>().sharedMaterial.SetColor("_ColorDot", dotColor);
+        else
+        {
+            for (int i = 0; i < GameObject.Find("Points").transform.childCount; ++i)
+            {
+                GameObject.Find("Points").transform.GetChild(i).gameObject.SetActive(false);
+                GameObject.Find("Grid").GetComponent<Renderer>().material.SetFloat("_ShowGrid", 0.0f);
+            }
+        }
     }
 
     private void SetLineColor()
     {
-        Vector4 lineColor = showGrid ? new Vector4(0, 0, 0, 1) : new Vector4(0, 0, 0, 0);
-
+        Vector4 lineColor = new Vector4(0, 0, 0, 1);
+        
         GetComponent<Renderer>().material.SetInt("XSelected", selectedColumnLine);
         GetComponent<Renderer>().material.SetInt("YSelected", selectedRowLine);
         GetComponent<Renderer>().material.SetVector("restColor", lineColor);
 
-        //
-        GameObject.Find("Points").transform.GetChild(selectedPoint).
-           gameObject.GetComponent<Renderer>().GetPropertyBlock(materialBlock);
+        if (!showGrid)
+            GameObject.Find("Points").transform.GetChild(selectedPoint).gameObject.SetActive(true);
+    }
 
-        materialBlock.SetColor("_ColorDot", new Color(0, 0, 0, 1));
-
-        GameObject.Find("Points").transform.GetChild(selectedPoint).
-           gameObject.GetComponent<Renderer>().SetPropertyBlock(materialBlock);
-        //
+    void RefreshDotAtOneDotMode()
+    {
+        if (!showGrid)
+            GameObject.Find("Points").transform.GetChild(selectedPoint).gameObject.SetActive(false);
     }
 
     static public void Initilize()
@@ -153,6 +160,9 @@ public class MoveVertexController : MonoBehaviour
         columnLineColor = new Vector4(0, 0, 1, 1);
 
         ChangeGrid.AddListener(ChangeStructure);
+        ShowDotsUI.AddListener(ShowDots);
+        ResetSelectedPointPosition.AddListener(ResetState);
+
         materialBlock = new MaterialPropertyBlock();
     }
 
@@ -166,6 +176,14 @@ public class MoveVertexController : MonoBehaviour
         Initilize();
     }
 
+    private void ResetState()
+    {
+        selectedRowLine *= 2;
+        selectedColumnLine *= 2;
+
+        speed *= 0.8f;
+    }
+
     private void ChangeStructure()
     {
         float moveSpeed = Time.deltaTime * speed;
@@ -173,16 +191,9 @@ public class MoveVertexController : MonoBehaviour
         width = GridGeneration.Instance().GetWidthVerticesNumber();
         height = GridGeneration.Instance().GetHeightVerticesNumber();
 
-        if (ControllerOutput.pressPrimaryButton && GridGeneration.Instance().subdivisionLevel != GridGeneration.Instance().maxSubdivision)
-        {
-            selectedRowLine *= 2;
-            selectedColumnLine *= 2;
-        }
-
         vertices = GetComponent<MeshFilter>().mesh.vertices;
 
-        ResetDots();
-
+        RefreshDotAtOneDotMode();
         ChoosePoint();
         if (MovePoint(moveSpeed))
         {

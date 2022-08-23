@@ -15,6 +15,7 @@ namespace CustomGrid
                 Debug.Log("The mesh can not be divided anymore.");
                 return null;
             }
+            MoveVertexController.ResetSelectedPointPosition.Invoke();
 
             originalVertices = mesh.vertices;
 
