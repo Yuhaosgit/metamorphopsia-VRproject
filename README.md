@@ -32,5 +32,5 @@ Press the left pad tracker's right axis to move to another UI panel.</br>
 [Show Texture] Show a texture to assist adjustment.</br> 
 ![image](https://user-images.githubusercontent.com/50432013/186755750-3c12315d-f6bc-4fba-a870-e20c52ee008a.png)</br></br>
 
-<tspan fill="red">The execution program stay in "Exe" file.</tspan>,
+<font color="red">The execution program stay in "Exe" file.</font>
 **PS: Don't change the execution file name, it may causes the input system failed.**
