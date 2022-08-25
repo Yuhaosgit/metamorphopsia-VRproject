@@ -1,6 +1,5 @@
 # metamorphopsia-VRproject
 This project is created based on Unity 2021.3 and HTC Vive Pro. Before run this program, please enable the external camera at SteamVR settings and do test if the camera could work. 
-PS: Don't change the execution file name, it may causes the input system failed.
 
 For the handle key map: Menu button to call UI;
                         Trigger to select UI elements and subdivide grid on test scene.
@@ -31,6 +30,7 @@ Press the left pad tracker's right axis to move to another UI panel.</br>
 [Quit] Quit the application.</br>
 [Show Grid] Would change the adjustment mode to only selected point and line show.</br>
 [Show Texture] Show a texture to assist adjustment.</br> 
-![image](https://user-images.githubusercontent.com/50432013/186755750-3c12315d-f6bc-4fba-a870-e20c52ee008a.png)
+![image](https://user-images.githubusercontent.com/50432013/186755750-3c12315d-f6bc-4fba-a870-e20c52ee008a.png)</br></br>
 
-
+The execution program stay in "Exe" file.
+PS: Don't change the execution file name, it may causes the input system failed.
