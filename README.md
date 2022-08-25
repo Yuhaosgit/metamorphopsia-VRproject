@@ -15,7 +15,7 @@ For the handle key map: Menu button to call UI;
 [Quit] Quit the application.</br>
 [Fish eyes] Change the display mode video stream (ture: distort the input video, false: undistort the input video).</br>
 [Monocular] The left eye and right eye use differnt distortion template (the templates were made in eye test scene).</br>
-[Binocular] The both eyes use same distortion template (the template was made in eye test scene).</br>.</br>
+[Binocular] The both eyes use same distortion template (the template was made in eye test scene).</br></br>
 
 
 ![image](https://user-images.githubusercontent.com/50432013/186719341-146b512f-8022-4d1e-96d4-cbc50704675b.png)
