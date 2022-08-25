@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
 
 public class GameRoot : MonoBehaviour
 {
@@ -18,7 +19,6 @@ public class GameRoot : MonoBehaviour
     private void Awake()
     {
         Configuration();
-
         if (Instance != null && Instance != this)
         {
             Destroy(this.gameObject);

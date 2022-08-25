@@ -175,7 +175,7 @@ Camera:
     height: 1
   near clip plane: 0.01
   far clip plane: 1000
-  field of view: 103.92374
+  field of view: 98
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -401,6 +401,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 52532802}
     m_Modifications:
+    - target: {fileID: 1169575520, guid: eb6be22054b83bb43b74fed6a8faad5a, type: 3}
+      propertyPath: speed
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 1610853455464505489, guid: eb6be22054b83bb43b74fed6a8faad5a,
         type: 3}
       propertyPath: m_LocalPosition.z
