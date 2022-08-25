@@ -125,7 +125,9 @@ public class SampleSavePanel : BasePanel
         {
             GameObject Grid = GameObject.Find("Grid");
             Grid.GetComponent<MeshFilter>().mesh = GridGeneration.Instance().Initilize(GridGeneration.Instance().subdivisionLevel);
-            //GridManager.gridDecoration.Reconstruct(Grid.GetComponent<MeshFilter>().mesh, Grid.transform);
+            
+            GridDecoration.changed = true;
+            GridManager.gridDecoration.Update(Grid.GetComponent<MeshFilter>().mesh, Grid.transform);
         });
     }
 }
