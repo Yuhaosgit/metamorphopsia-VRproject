@@ -31,3 +31,6 @@ Press the left pad tracker's right axis to move to another UI panel.</br>
 [Quit] Quit the application.</br>
 [Show Grid] Would change the adjustment mode to only selected point and line show.</br>
 [Show Texture] Show a texture to assist adjustment.</br> 
+![image](https://user-images.githubusercontent.com/50432013/186755750-3c12315d-f6bc-4fba-a870-e20c52ee008a.png)
+
+
