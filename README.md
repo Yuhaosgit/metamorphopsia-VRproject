@@ -27,4 +27,7 @@ For the handle key map: Menu button to call UI;
 </br>
 Press the left pad tracker's right axis to move to another UI panel.</br>
 ![image](https://user-images.githubusercontent.com/50432013/186721979-ee704278-f924-415a-8484-5cbb20262d06.png)</br>
-
+[Play] Change to the display scene (ps:would not save automatically, please save before leave).</br>
+[Quit] Quit the application.</br>
+[Show Grid] Would change the adjustment mode to only selected point and line show.</br>
+[Show Texture] Show a texture to assist adjustment.</br> 
