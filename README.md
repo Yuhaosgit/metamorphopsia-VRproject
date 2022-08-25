@@ -7,10 +7,9 @@ For the handle key map: Menu button to call UI;
                         Left pad tracker to move the selected vertex (Keep Pressed).
                         right pad tracker to select vertex (Press).
 
+[UI items]</br>
 
 ![image](https://user-images.githubusercontent.com/50432013/186716078-9151d6b8-94a4-424b-90c9-b92fd46095e8.png)
-
-[UI items]</br>
 [GO Test Scene] Change to the eye test scene.</br>
 [Quit] Quit the application.</br>
 [Fish eyes] Change the display mode video stream accoding to fish eyes mode.</br>
