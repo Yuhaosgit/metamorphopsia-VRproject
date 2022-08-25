@@ -13,9 +13,13 @@ For the handle key map: Menu button to call UI;
 [UI items]</br>
 [GO Test Scene] Change to the eye test scene.</br>
 [Quit] Quit the application.</br>
-[Fish eyes] Change the display mode video stream (ture: distort the input video, false: undistort the input video).</br>
-[Monocular] The left eye and right eye use differnt distortion template (the templates were made in eye test scene).</br>
+[Fish eyes] Change the display mode video stream accoding to fish eyes mode.</br>
+[Monocular] The left eye and right eye use differnt distortion template (the templates were made in eye test scene)[Recommend].</br>
 [Binocular] The both eyes use same distortion template (the template was made in eye test scene).</br></br>
 
 
 ![image](https://user-images.githubusercontent.com/50432013/186719341-146b512f-8022-4d1e-96d4-cbc50704675b.png)
+[UI items]</br>
+[Both eyes] Each eye use the same template, corresponding to the binocular mode, would distort the video by same pattern.</br>
+[Left eye] Left eye's template, corresponding to the monocular mode, would only distort left external camera's video content.</br>
+[Right eye] Right eye's template, corresponding to the monocular mode, would only distort right external camera's video content.</br>
